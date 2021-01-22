@@ -8,6 +8,13 @@ class BlogService {
     AppState.blogs = res.data
   }
 
+  async addPost(data) {
+    const user = await api.get('account')
+    data.creator = user.data.id
+    await api.post('api/blogs', data)
+    this.getBlogs()
+  }
+
   async getComments(id) {
     const res = await api.get('api/blogs/' + id + '/comments')
     return res.data

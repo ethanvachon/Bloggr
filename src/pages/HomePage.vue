@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div v-if="state.user.isAuthenticated">
         <div>
-          <form v-if="state.post === true" class="d-flex align-items-center justify-content-around">
+          <form v-if="state.post === true" class="d-flex align-items-center justify-content-around" @submit.prevent="addPost(state.newPost)">
             <input class="title" type="text" v-model="state.newPost.title" placeholder="title">
             <input class="body" type="text" v-model="state.newPost.body" placeholder="body">
             <button type="submit" class="btn btn-success">Post</button>
@@ -43,7 +43,15 @@ export default {
       }
     })
     return {
-      state
+      state,
+      async addPost(data) {
+        try {
+          state.post = false
+          await blogService.addPost(data)
+        } catch (error) {
+          logger.error(error)
+        }
+      }
     }
   }
 }
