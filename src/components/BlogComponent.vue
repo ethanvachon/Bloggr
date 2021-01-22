@@ -8,12 +8,15 @@
         </h5>
       </div>
       <div class="card-body">
-        <h4 class="card-title">
-          {{ blogProp.title }}
-        </h4>
-        <p class="card-text">
-          {{ blogProp.body }}
-        </p>
+        <router-link :to="{ name:'PostDetails', params: { id: blogProp.id} }">
+          <h4 class="card-title">
+            {{ blogProp.title }}
+          </h4>
+          <p class="card-text">
+            {{ blogProp.body }}
+          </p>
+        </router-link>
+
         <div class="text-left d-flex align-items-center pb-2" @click="state.commentDisplay = !state.commentDisplay">
           <i class="fas fa-comment"></i>
           <p class="comment-num pl-2">
