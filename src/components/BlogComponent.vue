@@ -38,9 +38,9 @@
               <div class="row">
                 <div class="col-10">
                   <div class="d-flex pt-2 border-top">
-                    <p v-if="state.commentEdit == false" class="creator-name mr-2">{{comment.creator.name}}:</p>
-                    <p v-if="state.commentEdit == false">{{comment.body}}</p>
-                    <form v-if="state.commentEdit == true" @submit="editComment(comment.id)">
+                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name" class="creator-name mr-2">{{comment.creator.name}}:</p>
+                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name">{{comment.body}}</p>
+                    <form v-if="state.commentEdit == true && state.user.name == comment.creator.name" @submit="editComment(comment.id)">
                       <input type="text" v-model="state.editComment">
                       <button class="btn btn-success" type="submit">Submit</button>
                     </form>
