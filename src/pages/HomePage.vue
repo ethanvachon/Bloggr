@@ -61,7 +61,9 @@ export default {
 .home{
   text-align: center;
   user-select: none;
-  > img{
+  background-image: url('https://cssauthor.com/wp-content/uploads/2015/01/Seamless-Paper-Textures.jpg');
+  background-position: center;
+    > img{
     height: 200px;
     width: 200px;
   }

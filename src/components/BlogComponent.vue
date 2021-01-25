@@ -169,7 +169,7 @@ export default {
   }
   .details{
     margin: 0;
-    padding-left: 30vw;
+    padding-left: 35vw;
     padding-top: 1vh;
     color: rgb(95, 95, 95);
   }
