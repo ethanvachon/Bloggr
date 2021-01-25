@@ -12,16 +12,16 @@
         </div>
       </div>
       <div class="card-body">
-          <h4 class="card-title" v-if="state.editMode == false">
-            {{ blogProp.title }}
-          </h4>
-          <p class="card-text" v-if="state.editMode == false">
-            {{ blogProp.body }}
-          </p>
-          <form @submit.prevent="editBlog()">
-            <input class="my-2" type="text" v-if="state.editMode == true" placeholder="New Title" v-model="state.newTitle">
-            <input class="my-2" type="text" v-if="state.editMode == true" placeholder="New Body" v-model="state.newBody">
-            <button type="submit" v-if="state.editMode == true" class="btn btn-success">Submit</button>
+        <h4 class="card-title" v-if="state.editMode == false">
+          {{ blogProp.title }}
+        </h4>
+        <p class="card-text" v-if="state.editMode == false">
+          {{ blogProp.body }}
+        </p>
+        <form @submit.prevent="editBlog()">
+          <input class="my-2" type="text" v-if="state.editMode == true" placeholder="New Title" v-model="state.newTitle">
+          <input class="my-2" type="text" v-if="state.editMode == true" placeholder="New Body" v-model="state.newBody">
+          <button type="submit" v-if="state.editMode == true" class="btn btn-success">Submit</button>
         </form>
         <div class="text-left d-flex align-items-center pb-2" @click="state.commentDisplay = !state.commentDisplay">
           <i class="fas fa-comment"></i>
@@ -38,8 +38,11 @@
               <div class="row">
                 <div class="col-10">
                   <div class="d-flex pt-2 border-top">
-                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name" class="creator-name mr-2">{{comment.creator.name}}:</p>
-                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name">{{comment.body}}</p>
+                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name" class="creator-name mr-2">{{ comment.creator.name }}:
+                    </p>
+                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name">
+                      {{ comment.body }}
+                    </p>
                     <form v-if="state.commentEdit == true && state.user.name == comment.creator.name" @submit="editComment(comment.id)">
                       <input type="text" v-model="state.editComment">
                       <button class="btn btn-success" type="submit">Submit</button>

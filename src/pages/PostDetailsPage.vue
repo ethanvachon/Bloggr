@@ -4,7 +4,7 @@
       <div class="col-12 d-flex justify-content-center">
         <div v-if="post">
           <div class="card">
-            <div class="d-flex border-bottom pb-3 align-items-center justify-content-center">
+            <div class="d-flex border-bottom pb-3 pt-3 align-items-center justify-content-center">
               <img :src="post.creator.picture" class="card-img-top">
               <h1 class="pl-2">{{ post.creator.name }}</h1>
             </div>
