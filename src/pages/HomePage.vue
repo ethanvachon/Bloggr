@@ -1,5 +1,5 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center mt-3">
+  <div class="home flex-grow-1 d-flex flex-column align-items-center pt-3">
     <div class="container-fluid">
       <div v-if="state.user.isAuthenticated">
         <div>

@@ -43,7 +43,7 @@
                     <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name">
                       {{ comment.body }}
                     </p>
-                    <form v-if="state.commentEdit == true && state.user.name == comment.creator.name" @submit="editComment(comment.id)">
+                    <form v-if="state.commentEdit == true && state.user.name == comment.creator.name" @submit.prevent="editComment(comment.id)">
                       <input type="text" v-model="state.editComment">
                       <button class="btn btn-success" type="submit">Submit</button>
                     </form>
