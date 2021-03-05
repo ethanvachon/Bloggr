@@ -6,9 +6,20 @@
         <h5 class="pl-3">
           {{ blogProp.creator.name }}
         </h5>
-        <div class="pl-5">
+        <!-- <div class="pl-5">
           <i class="fas fa-pencil-alt pl-2" v-if="state.user.name == blogProp.creator.name" @click="state.editMode = true"></i>
           <i class="fa fa-trash text-danger pl-2" v-if="state.user.name == blogProp.creator.name" @click="deleteBlog"></i>
+        </div> -->
+        <div class="dropdown">
+          <span>...</span>
+          <div class="dropdown-content">
+            <p v-if="state.user.name == blogProp.creator.name" @click="state.editMode = true">
+              edit
+            </p>
+            <p v-if="state.user.name == blogProp.creator.name" @click="deleteBlog">
+              delete
+            </p>
+          </div>
         </div>
       </div>
       <div class="card-body">
@@ -21,7 +32,9 @@
         <form @submit.prevent="editBlog()">
           <input class="my-2" type="text" v-if="state.editMode == true" placeholder="New Title" v-model="state.newTitle">
           <input class="my-2" type="text" v-if="state.editMode == true" placeholder="New Body" v-model="state.newBody">
-          <button type="submit" v-if="state.editMode == true" class="btn btn-success">Submit</button>
+          <button type="submit" v-if="state.editMode == true" class="btn btn-success">
+            Submit
+          </button>
         </form>
         <div class="text-left d-flex align-items-center pb-2" @click="state.commentDisplay = !state.commentDisplay">
           <i class="fas fa-comment"></i>
@@ -29,7 +42,9 @@
             {{ state.comments.length }}
           </p>
           <router-link :to="{ name: 'PostDetailsPage', params: {id: blogProp.id}}">
-            <p class="details">details</p>
+            <p class="details">
+              details
+            </p>
           </router-link>
         </div>
         <div v-if="state.commentDisplay === true">
@@ -38,14 +53,17 @@
               <div class="row">
                 <div class="col-10">
                   <div class="d-flex pt-2 border-top">
-                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name" class="creator-name mr-2">{{ comment.creator.name }}:
+                    <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name" class="creator-name mr-2">
+                      {{ comment.creator.name }}:
                     </p>
                     <p v-if="state.commentEdit == false || state.user.name !== comment.creator.name">
                       {{ comment.body }}
                     </p>
                     <form v-if="state.commentEdit == true && state.user.name == comment.creator.name" @submit.prevent="editComment(comment.id)">
                       <input type="text" v-model="state.editComment">
-                      <button class="btn btn-success" type="submit">Submit</button>
+                      <button class="btn btn-success" type="submit">
+                        Submit
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -58,7 +76,9 @@
           </div>
           <form class="d-flex justify-content-center border-top pt-2" @submit.prevent="addComment" v-if="state.user.isAuthenticated">
             <input type="text" placeholder="add comment" v-model="state.newComment">
-            <button class="btn btn-outline-success">Submit</button>
+            <button class="btn btn-outline-success">
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -145,6 +165,24 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
   img{
     width: 5vw;
     height: auto
