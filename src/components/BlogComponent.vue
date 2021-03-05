@@ -11,7 +11,9 @@
           <i class="fa fa-trash text-danger pl-2" v-if="state.user.name == blogProp.creator.name" @click="deleteBlog"></i>
         </div> -->
         <div class="dropdown">
-          <span v-if="state.user.name == blogProp.creator.name">...</span>
+          <h6 v-if="state.user.name == blogProp.creator.name">
+            ...
+          </h6>
           <div class="dropdown-content">
             <p @click="state.editMode = true">
               edit
@@ -36,11 +38,13 @@
             Submit
           </button>
         </form>
-        <div class="text-left d-flex align-items-center pb-2" @click="state.commentDisplay = !state.commentDisplay">
-          <i class="fas fa-comment"></i>
-          <p class="comment-num pl-2">
-            {{ state.comments.length }}
-          </p>
+        <div @click="state.commentDisplay = !state.commentDisplay">
+          <div class="comments d-flex align-items-center">
+            <i class="fas fa-comment"></i>
+            <p class="mb-0 pl-2">
+              {{ state.comments.length }}
+            </p>
+          </div>
           <router-link :to="{ name: 'PostDetailsPage', params: {id: blogProp.id}}">
             <p class="details">
               details
@@ -89,7 +93,6 @@
 <script>
 import { reactive, onMounted, computed } from 'vue'
 import { logger } from '../utils/Logger'
-// import { AppState } from '../AppState'
 import { blogService } from '../services/BlogService'
 import { AppState } from '../AppState'
 export default {
@@ -166,8 +169,10 @@ export default {
 
 <style scoped>
 .dropdown {
-  position: relative;
+  position: absolute;
   display: inline-block;
+  top: 0px;
+  right: 10px;
 }
 
 .dropdown-content {
@@ -187,8 +192,11 @@ export default {
     width: 5vw;
     height: auto
   }
-  .comment-num{
-    margin: 0px;
+  .comments{
+    width: fit-content;
+    position: absolute;
+    bottom: 2vh;
+    left: 2vw;
   }
   .creator-name{
     font-weight: bold;
@@ -210,8 +218,9 @@ export default {
   }
   .details{
     margin: 0;
-    padding-left: 35vw;
-    padding-top: 1vh;
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
     color: rgb(95, 95, 95);
   }
   .right{
