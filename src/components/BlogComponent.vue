@@ -11,12 +11,12 @@
           <i class="fa fa-trash text-danger pl-2" v-if="state.user.name == blogProp.creator.name" @click="deleteBlog"></i>
         </div> -->
         <div class="dropdown">
-          <span>...</span>
+          <span v-if="state.user.name == blogProp.creator.name">...</span>
           <div class="dropdown-content">
-            <p v-if="state.user.name == blogProp.creator.name" @click="state.editMode = true">
+            <p @click="state.editMode = true">
               edit
             </p>
-            <p v-if="state.user.name == blogProp.creator.name" @click="deleteBlog">
+            <p @click="deleteBlog">
               delete
             </p>
           </div>

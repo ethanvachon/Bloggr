@@ -6,11 +6,15 @@
           <form v-if="state.post === true" class="d-flex align-items-center justify-content-around" @submit.prevent="addPost(state.newPost)">
             <input class="title" type="text" v-model="state.newPost.title" placeholder="title">
             <input class="body" type="text" v-model="state.newPost.body" placeholder="body">
-            <button type="submit" class="btn btn-success">Post</button>
+            <button type="submit" class="btn btn-success">
+              Post
+            </button>
           </form>
         </div>
         <div class="mb-3 d-flex justify-content-end pr-2" v-if="state.post === false">
-          <button class="btn btn-success" @click="state.post = !state.post">+</button>
+          <button class="btn btn-success" @click="state.post = !state.post">
+            +
+          </button>
         </div>
       </div>
       <div class="row">

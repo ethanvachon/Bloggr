@@ -14,8 +14,8 @@ class BlogService {
   }
 
   async addPost(data) {
-    const user = await api.get('account')
-    data.creator = user.data.id
+    // const user = await api.get('account')
+    // data.creator = user.data.id
     await api.post('api/posts', data)
     this.getBlogs()
   }
