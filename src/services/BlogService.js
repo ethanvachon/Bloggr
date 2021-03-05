@@ -4,34 +4,34 @@ import { api } from './AxiosService'
 
 class BlogService {
   async getBlogs() {
-    const res = await api.get('api/blogs')
+    const res = await api.get('api/posts')
     AppState.blogs = res.data
   }
 
   async getOnePost(id) {
-    const res = await api.get('api/blogs/' + id)
+    const res = await api.get('api/posts/' + id)
     AppState.selected = res.data
   }
 
   async addPost(data) {
     const user = await api.get('account')
     data.creator = user.data.id
-    await api.post('api/blogs', data)
+    await api.post('api/posts', data)
     this.getBlogs()
   }
 
   async editBlog(blogData, id) {
-    await api.put('api/blogs/' + id, blogData)
+    await api.put('api/posts/' + id, blogData)
     this.getBlogs()
   }
 
   async deleteBlog(id) {
-    await api.delete('api/blogs/' + id)
+    await api.delete('api/posts/' + id)
     this.getBlogs()
   }
 
   async getComments(id) {
-    const res = await api.get('api/blogs/' + id + '/comments')
+    const res = await api.get('api/posts/' + id + '/comments')
     return res.data
   }
 
