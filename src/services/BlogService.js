@@ -39,8 +39,8 @@ class BlogService {
     const res = await api.get('account')
     const body = {
       body: data,
-      blog: id,
-      creator: res.data.id
+      postId: id,
+      creatorId: res.data.id
     }
     await api.post('api/comments', body)
   }

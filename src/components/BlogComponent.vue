@@ -38,7 +38,7 @@
             Submit
           </button>
         </form>
-        <div @click="state.commentDisplay = !state.commentDisplay">
+        <div @click="state.commentDisplay = !state.commentDisplay" v-if="state.commentDisplay == true">
           <div class="comments d-flex align-items-center">
             <i class="fas fa-comment"></i>
             <p class="mb-0 pl-2">
@@ -169,10 +169,7 @@ export default {
 
 <style scoped>
 .dropdown {
-  position: absolute;
   display: inline-block;
-  top: 0px;
-  right: 10px;
 }
 
 .dropdown-content {
